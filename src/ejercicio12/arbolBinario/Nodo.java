@@ -45,7 +45,6 @@ public class Nodo {
         } else {
             return (1 + Math.max(altura(nodo.getHijoIzquierdo()), altura(nodo.getHijoDerecho())));
         }
-
     }
 
     public Nodo buscarNodo(int valorABuscar) {
@@ -58,14 +57,12 @@ public class Nodo {
                     return null;
                 else
                     aux = this.hijoIzquierdo.buscarNodo(valorABuscar);
-
             else {
                 if (hijoDerecho == null)
                     return null;
                 else
                     aux = this.hijoDerecho.buscarNodo(valorABuscar);
             }
-
         }
         return aux;
     }
