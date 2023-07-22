@@ -6,6 +6,11 @@ import ejercicio12.arbolBinario.Nodo;
 import java.util.Scanner;
 
 public class Menu {
+    
+    /**
+     * inicio del programa
+     * @param args
+     */
     public static void main(String[] args) {
         ABB arbol = new ABB();
         Scanner sc = new Scanner(System.in);
@@ -15,6 +20,11 @@ public class Menu {
         System.out.println("Gracias por usar el programa");
         sc.close();
     }
+    /**
+     * Función que inserta una serie de nodos en el árbol
+     * @param arbol
+     * @return ABB
+     */
     private static ABB insertar(ABB arbol) {
         Scanner sc = new Scanner(System.in);
         String condition = "S";
