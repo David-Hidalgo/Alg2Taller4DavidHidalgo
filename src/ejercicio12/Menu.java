@@ -29,18 +29,30 @@ public class Menu {
      */
     private static void insertar(ABB arbol, ListaEnlazada lista) {
         Scanner sc = new Scanner(System.in);
-        String condition = "S";
-        String opcion = "S";
+        String condition="n";
+        String opcion;
+        boolean bandera;
         do {
             System.out.println("Ingrese el valor del nodo a insertar");
             opcion = sc.nextLine();
             if (!Validaciones.validarNumero(opcion)) {
                 System.out.println("Error escoja un numero");
             } else {
-                System.out.println("este es el numero que usted quiere ingresar: " + opcion);
-                System.out.println("¿Es correcto? (S/N)");
-                condition = sc.nextLine();
-            }
+                do  {
+                    System.out.println("este es el numero que usted quiere ingresar: " + opcion);
+                    System.out.println("¿Es correcto? (S/N)");
+                    condition = sc.nextLine();
+                    if (condition.equalsIgnoreCase("S"))
+                        bandera = true;
+                        else if (condition.equalsIgnoreCase("N")) {
+                        bandera = true;
+                    } else {
+                        bandera = false;
+                        System.out.println("Error escoja una opcion valida");
+                    }
+                    
+                } while (bandera == false);
+                }
         } while (!Validaciones.validarNumero(opcion) && (condition.equalsIgnoreCase("N")));
         int valor = Integer.parseInt(opcion);
         arbol.insertar(valor);
@@ -89,6 +101,7 @@ public class Menu {
         System.out.flush();
         Scanner sc = new Scanner(System.in);
         String opcion;
+        boolean bandera;
         int numero;
         int numeroOpcion;
         System.out.println("Bienvenido al programa de árboles binarios de búsqueda");
@@ -109,8 +122,19 @@ public class Menu {
                 String condition;
                 do {
                     Menu.insertar(arbol, lista);
-                    System.out.println("¿Desea ingresar otro nodo? (S/N)");
-                    condition = sc.nextLine();
+                    do {
+                        System.out.println("¿Desea ingresar otro nodo? (S/N)");
+                        condition = sc.nextLine();
+                        if (condition.equalsIgnoreCase("S"))
+                            bandera = true;
+                            else if (condition.equalsIgnoreCase("N")) {
+                            bandera = true;
+                        } else {
+                            bandera = false;
+                            System.out.println("Error escoja una opcion valida");
+                        }
+                        
+                    } while (bandera == false);
                 } while (condition.equalsIgnoreCase("S"));
                 break;
             case 2:
@@ -121,6 +145,8 @@ public class Menu {
                 } while (!Validaciones.validarNumero(opcion));
                 numero = Integer.parseInt(opcion);
                 poblacionEnNivel(arbol, numero);
+                System.out.println("Presione enter para continuar");
+                sc.nextLine();
                 break;
             case 3:
                 System.out.println("mostrar la secuencia de nodos insertados");
@@ -157,7 +183,7 @@ public class Menu {
                 System.out.println("Opción inválida");
                 break;
         }
-        if (numeroOpcion == 4) {
+        if (numeroOpcion == 5) {
             return false;
         } else {
             return true;
